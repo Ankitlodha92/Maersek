@@ -1,7 +1,15 @@
+using Maersk.Sorting.Api;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.Logging;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 
-namespace Maersk.Sorting.Api
+namespace MaersekSorting
 {
     public class Program
     {
@@ -15,6 +23,7 @@ namespace Maersk.Sorting.Api
                 .ConfigureWebHostDefaults(webBuilder =>
                 {
                     webBuilder.UseStartup<Startup>();
-                });
+                }).ConfigureServices(services =>
+                services.AddHostedService<DeriverdBackground>());
     }
 }

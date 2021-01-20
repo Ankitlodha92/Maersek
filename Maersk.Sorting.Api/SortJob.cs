@@ -15,9 +15,9 @@ namespace Maersk.Sorting.Api
         }
 
         public Guid Id { get; }
-        public SortJobStatus Status { get; }
+        public SortJobStatus Status { get; set; }
         public TimeSpan? Duration { get; }
         public IReadOnlyCollection<int> Input { get; }
-        public IReadOnlyCollection<int>? Output { get; }
+        public IReadOnlyCollection<int>? Output { get; set; }
     }
 }

@@ -1,3 +1,4 @@
+using MaersekSorting;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -19,10 +20,10 @@ namespace Maersk.Sorting.Api
         public void ConfigureServices(IServiceCollection services)
         {
             services
-                .AddControllers()
-                .AddNewtonsoftJson(options => options.SerializerSettings.Converters.Add(new StringEnumConverter()));
+                .AddControllers().AddNewtonsoftJson(options => options.SerializerSettings.Converters.Add(new StringEnumConverter()));
 
             services.AddSingleton<ISortJobProcessor, SortJobProcessor>();
+            services.AddSingleton<IWorker, Worker>();
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
